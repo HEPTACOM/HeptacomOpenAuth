@@ -1,0 +1,45 @@
+{
+    "name": "heptacom/open-auth",
+    "type": "library",
+    "description": "A base package to provide contracts for open authentication interactions",
+    "keywords": [
+        "oauth",
+        "open-authentication"
+    ],
+    "license": [
+        "AGPL-3.0-or-later"
+    ],
+    "authors": [
+        {
+            "name": "HEPTACOM GmbH"
+        },
+        {
+            "name": "Joshua Behrens",
+            "email": "behrens@heptacom.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    },
+    "conflict": {
+        "nikic/php-parser": "4.7.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": ">=2.7",
+        "friendsofphp/php-cs-fixer": ">=2",
+        "icanhazstring/composer-unused": ">=0.7",
+        "maglnet/composer-require-checker": ">=2",
+        "phpstan/extension-installer": ">=1",
+        "phpstan/phpstan": ">=0.12",
+        "phpstan/phpstan-deprecation-rules": ">=0.12",
+        "phpstan/phpstan-phpunit": ">=0.12",
+        "phpstan/phpstan-strict-rules": ">=0.12",
+        "vimeo/psalm": ">=3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Heptacom\\OpenAuth\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

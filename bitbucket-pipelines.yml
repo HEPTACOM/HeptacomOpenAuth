@@ -1,0 +1,39 @@
+image: atlassian/default-image:2
+
+definitions:
+    steps:
+        -   step: &default-step
+                caches:
+                    - composer
+                artifacts:
+                    - .build/**
+                    - vendor/**
+                    - composer.lock
+
+pipelines:
+    branches:
+        master:
+            -   step:
+                    name: Mirror to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/HeptacomOpenAuth.git
+                        - git push --force github master
+    tags:
+        '*':
+            -   step:
+                    name: Mirror tags to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/HeptacomOpenAuth.git
+                        - git push --force github tag $BITBUCKET_TAG
+    default:
+        -   step:
+                <<: *default-step
+                name: Install
+                script:
+                    - composer-repository
+                    - make vendor
+        -   step:
+                <<: *default-step
+                name: Code style and static code analysis
+                script:
+                    - make cs
