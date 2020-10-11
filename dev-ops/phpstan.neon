@@ -5,3 +5,5 @@ parameters:
 	paths:
 		- ../src/
 	tmpDir: ../.build/phpstan/
+	excludes_analyse:
+		- ../src/SymfonyBundle.php

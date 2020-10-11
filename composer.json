@@ -29,18 +29,21 @@
         "nikic/php-parser": "4.7.0"
     },
     "require-dev": {
+        "dq5studios/psalm-junit": "^2.0",
         "ergebnis/composer-normalize": ">=2.7",
         "friendsofphp/php-cs-fixer": ">=2",
         "icanhazstring/composer-unused": ">=0.7",
         "maglnet/composer-require-checker": ">=2",
+        "mavimo/phpstan-junit": "^0.3.0",
         "phpstan/extension-installer": ">=1",
         "phpstan/phpstan": ">=0.12",
         "phpstan/phpstan-deprecation-rules": ">=0.12",
         "phpstan/phpstan-phpunit": ">=0.12",
         "phpstan/phpstan-strict-rules": ">=0.12",
-        "vimeo/psalm": ">=3",
-        "dq5studios/psalm-junit": "^2.0",
-        "mavimo/phpstan-junit": "^0.3.0"
+        "vimeo/psalm": ">=3"
+    },
+    "suggest": {
+        "symfony/http-kernel": ">=3.4"
     },
     "autoload": {
         "psr-4": {
