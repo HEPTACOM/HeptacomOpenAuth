@@ -38,7 +38,9 @@
         "phpstan/phpstan-deprecation-rules": ">=0.12",
         "phpstan/phpstan-phpunit": ">=0.12",
         "phpstan/phpstan-strict-rules": ">=0.12",
-        "vimeo/psalm": ">=3"
+        "vimeo/psalm": ">=3",
+        "dq5studios/psalm-junit": "^2.0",
+        "mavimo/phpstan-junit": "^0.3.0"
     },
     "autoload": {
         "psr-4": {

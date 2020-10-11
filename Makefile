@@ -20,16 +20,16 @@ it: cs-fix-composer-normalize csfix cs
 cs: cs-fixer-dry-run cs-phpstan cs-psalm cs-soft-require cs-composer-unused cs-composer-normalize cs-json
 
 .PHONY: cs-fixer-dry-run
-cs-fixer-dry-run: vendor .build
-	$(PHP) vendor/bin/php-cs-fixer fix --dry-run --config=dev-ops/php_cs.php --diff --verbose
+cs-fixer-dry-run: vendor .build test-results
+	$(PHP) vendor/bin/php-cs-fixer fix --dry-run --config=dev-ops/php_cs.php --diff --verbose --allow-risky=yes --format junit > test-results/php-cs-fixer.xml
 
 .PHONY: cs-phpstan
-cs-phpstan: vendor .build
-	$(PHP) vendor/bin/phpstan analyse -c dev-ops/phpstan.neon
+cs-phpstan: vendor .build test-results
+	$(PHP) vendor/bin/phpstan analyse -c dev-ops/phpstan.neon --error-format=junit --no-progress > test-results/php-stan.xml
 
 .PHONY: cs-psalm
-cs-psalm: vendor .build
-	$(PHP) vendor/bin/psalm -c $(shell pwd)/dev-ops/psalm.xml
+cs-psalm: vendor .build test-results
+	$(PHP) vendor/bin/psalm -c $(shell pwd)/dev-ops/psalm.xml --no-progress --diff --show-info=false
 
 .PHONY: cs-composer-unused
 cs-composer-unused: vendor
@@ -63,6 +63,10 @@ composer-update:
 	$(COMPOSER) update
 
 vendor: composer-update
+
+test-results:
+	mkdir test-results
+	echo '*' > test-results/.gitignore
 
 .PHONY: .build
 .build:
