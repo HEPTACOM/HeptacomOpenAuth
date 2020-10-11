@@ -15,5 +15,5 @@ abstract class ClientContract
 
     abstract public function getUser(string $state, string $code, RedirectBehaviour $behaviour): UserStruct;
 
-    abstract public function authorizeRequest(RequestInterface $request, TokenPairStruct $token);
+    abstract public function authorizeRequest(RequestInterface $request, TokenPairStruct $token): RequestInterface;
 }

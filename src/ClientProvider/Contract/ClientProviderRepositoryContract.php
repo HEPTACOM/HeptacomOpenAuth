@@ -9,9 +9,13 @@ class ClientProviderRepositoryContract
      */
     protected $clientProviders = [];
 
+    /**
+     * @param mixed|ClientProviderContract[]|iterable<array-key, ClientProviderContract> $clientProviders
+     */
     public function __construct($clientProviders)
     {
         if (\is_iterable($clientProviders)) {
+            /** @var mixed|ClientProviderContract $clientProvider */
             foreach ($clientProviders as $clientProvider) {
                 if ($clientProvider instanceof ClientProviderContract) {
                     $this->clientProviders[] = $clientProvider;

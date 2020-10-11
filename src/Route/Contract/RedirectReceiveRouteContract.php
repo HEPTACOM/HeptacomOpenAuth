@@ -40,8 +40,8 @@ class RedirectReceiveRouteContract
     ): UserStruct {
         \parse_str($request->getUri()->getQuery(), $params);
 
-        $state = $params[$behaviour->getStateKey()] ?? '';
-        $code = $params[$behaviour->getCodeKey()] ?? null;
+        $state = (string) ($params[$behaviour->getStateKey()] ?? '');
+        $code = (string) ($params[$behaviour->getCodeKey()] ?? '');
 
         if ($state === '' && $behaviour->isExpectState()) {
             throw new RedirectReceiveMissingStateException($params, $behaviour->getStateKey());

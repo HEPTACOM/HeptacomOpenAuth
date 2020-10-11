@@ -21,6 +21,9 @@ class TokenPairStruct
      */
     protected $expiresAt;
 
+    /**
+     * @var array
+     */
     protected $passthrough = [];
 
     public function getAccessToken(): ?string
@@ -64,6 +67,9 @@ class TokenPairStruct
         return $this->passthrough;
     }
 
+    /**
+     * @param mixed $value
+     */
     public function addPassthrough(string $key, $value): self
     {
         $this->passthrough[$key] = $value;

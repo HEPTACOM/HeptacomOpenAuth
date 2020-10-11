@@ -6,6 +6,9 @@ use Throwable;
 
 class FactorizeClientInvalidConfigurationException extends FactorizeClientException
 {
+    /**
+     * @var array
+     */
     private $configuration;
 
     public function __construct(string $providerKey, array $configuration, ?Throwable $previous = null)

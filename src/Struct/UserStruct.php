@@ -7,7 +7,7 @@ class UserStruct
     /**
      * @var string
      */
-    protected $primaryEmail;
+    protected $primaryEmail = '';
 
     /**
      * @var array|string[]
@@ -17,18 +17,21 @@ class UserStruct
     /**
      * @var string
      */
-    protected $displayName;
+    protected $displayName = '';
 
     /**
      * @var string
      */
-    protected $primaryKey;
+    protected $primaryKey = '';
 
     /**
      * @var TokenPairStruct|null
      */
-    protected $tokenPair;
+    protected $tokenPair = null;
 
+    /**
+     * @var array
+     */
     protected $passthrough = [];
 
     public function getPrimaryEmail(): string
@@ -96,6 +99,9 @@ class UserStruct
         return $this->passthrough;
     }
 
+    /**
+     * @param mixed $value
+     */
     public function addPassthrough(string $key, $value): self
     {
         $this->passthrough[$key] = $value;
