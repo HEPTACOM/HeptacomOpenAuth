@@ -9,6 +9,8 @@ definitions:
                     - .build/**
                     - vendor/**
                     - composer.lock
+                after-script:
+                    - find test-results -type f -name '*.xml' -exec sed -i .bak -e "s|`pwd`/||" {} +
 
 pipelines:
     branches:
