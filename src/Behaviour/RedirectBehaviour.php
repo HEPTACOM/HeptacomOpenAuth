@@ -25,11 +25,21 @@ class RedirectBehaviour
      */
     private $stateKey;
 
-    public function __construct(?bool $expectState = null, ?string $codeKey = null, ?string $stateKey = null)
-    {
+    /**
+     * @var string|null
+     */
+    private $redirectUri;
+
+    public function __construct(
+        ?bool $expectState = null,
+        ?string $codeKey = null,
+        ?string $stateKey = null,
+        ?string $redirectUri = null
+    ) {
         $this->expectState = $expectState ?? self::DEFAULT_EXPECT_STATE;
         $this->codeKey = $codeKey ?? self::DEFAULT_CODE_KEY;
         $this->stateKey = $stateKey ?? self::DEFAULT_STATE_KEY;
+        $this->redirectUri = $redirectUri;
     }
 
     public function isExpectState(): bool
@@ -64,6 +74,18 @@ class RedirectBehaviour
     public function setStateKey(?string $stateKey = null): self
     {
         $this->stateKey = $stateKey ?? self::DEFAULT_STATE_KEY;
+
+        return $this;
+    }
+
+    public function getRedirectUri(): ?string
+    {
+        return $this->redirectUri;
+    }
+
+    public function setRedirectUri(?string $redirectUri): self
+    {
+        $this->redirectUri = $redirectUri;
 
         return $this;
     }
