@@ -4,35 +4,28 @@ namespace Heptacom\OpenAuth\Struct;
 
 class UserStruct
 {
-    /**
-     * @var string
-     */
-    protected $primaryEmail = '';
+    protected string $primaryEmail = '';
 
     /**
-     * @var array|string[]
+     * @var string[]
      */
-    protected $emails = [];
+    protected array $emails = [];
 
-    /**
-     * @var string
-     */
-    protected $displayName = '';
+    protected string $firstName = '';
 
-    /**
-     * @var string
-     */
-    protected $primaryKey = '';
+    protected string $lastName = '';
 
-    /**
-     * @var TokenPairStruct|null
-     */
-    protected $tokenPair = null;
+    protected string $displayName = '';
 
-    /**
-     * @var array
-     */
-    protected $passthrough = [];
+    protected ?string $timezone = null;
+
+    protected ?string $locale = null;
+
+    protected string $primaryKey = '';
+
+    protected ?TokenPairStruct $tokenPair = null;
+
+    protected array $passthrough = [];
 
     public function getPrimaryEmail(): string
     {
@@ -58,6 +51,38 @@ class UserStruct
         return $this;
     }
 
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     * @return UserStruct
+     */
+    public function setFirstName(string $firstName): UserStruct
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     * @return UserStruct
+     */
+    public function setLastName(string $lastName): UserStruct
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
     public function getDisplayName(): string
     {
         return $this->displayName;
@@ -66,6 +91,30 @@ class UserStruct
     public function setDisplayName(string $displayName): self
     {
         $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getTimezone(): ?string
+    {
+        return $this->timezone;
+    }
+
+    public function setTimezone(?string $timezone): self
+    {
+        $this->timezone = $timezone;
+
+        return $this;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }
