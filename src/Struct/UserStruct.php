@@ -4,27 +4,54 @@ namespace Heptacom\OpenAuth\Struct;
 
 class UserStruct
 {
-    protected string $primaryEmail = '';
+    /**
+     * @var string
+     */
+    protected $primaryEmail = '';
 
     /**
-     * @var string[]
+     * @var array|string[]
      */
-    protected array $emails = [];
+    protected $emails = [];
 
-    protected string $firstName = '';
+    /**
+     * @var string
+     */
+    protected $firstName = '';
 
-    protected string $lastName = '';
+    /**
+     * @var string
+     */
+    protected $lastName = '';
 
-    protected string $displayName = '';
+    /**
+     * @var string
+     */
+    protected $displayName = '';
 
-    protected ?string $timezone = null;
+    /**
+     * @var string|null
+     */
+    protected $timezone = null;
 
-    protected ?string $locale = null;
+    /**
+     * @var string|null
+     */
+    protected $locale = null;
 
-    protected string $primaryKey = '';
+    /**
+     * @var string
+     */
+    protected $primaryKey = '';
 
-    protected ?TokenPairStruct $tokenPair = null;
+    /**
+     * @var TokenPairStruct|null
+     */
+    protected $tokenPair = null;
 
+    /**
+     * @var array|mixed[]
+     */
     protected array $passthrough = [];
 
     public function getPrimaryEmail(): string
