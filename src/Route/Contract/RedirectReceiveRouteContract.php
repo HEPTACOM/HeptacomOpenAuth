@@ -38,7 +38,14 @@ class RedirectReceiveRouteContract
         array $configuration,
         RedirectBehaviour $behaviour
     ): UserStruct {
-        \parse_str($request->getUri()->getQuery(), $params);
+        \parse_str($request->getUri()->getQuery(), $getParams);
+
+        $postParams = [];
+        if ($request->getHeaderLine('content-type') === 'application/x-www-form-urlencoded') {
+            \parse_str((string)$request->getBody(), $postParams);
+        }
+
+        $params = array_merge($getParams, $postParams);
 
         $state = (string) ($params[$behaviour->getStateKey()] ?? '');
         $code = (string) ($params[$behaviour->getCodeKey()] ?? '');
